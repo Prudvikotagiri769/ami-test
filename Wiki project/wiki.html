@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    </style>
+</head>
+<body>
+<h1>Cloud Instances Branch and code level</h1>
+<h2>Production</h2>
+<div class="container" style="width:60%;">
+    <table id="example">
+        <thead>
+            <tr>
+                <th scope="col">Instance</th>
+                <th scope="col">cloud branch</th>
+                <th scope="col">Last commit</th>
+                <th scope="col">UI version</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<!-- TABLE -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css">
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" 
+src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
+
+<script type="text/javascript" class="init">
+    $(document).ready(function() {
+      // Create a new DataTable object
+      table = $('#example').DataTable({
+        "lengthMenu": [ [15, 50, 100, -1], [15, 50, 100, "All"] ],
+        "pagingType": "simple",
+        scrollY: 400,
+        scrollCollapse: true,
+        order: [[ 0, 'asc' ], [3, 'desc' ]],
+           ajax: {
+             url: '/exampleData',
+           },
+           columns: [
+               { data: 'Instance' },
+               { data: 'cloud branch' },
+               { data: 'Last commit' },
+               { data: 'UI version' }
+             ]
+           })
+    });
+</script>
+
+</body>
+</html>
